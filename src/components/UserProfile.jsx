@@ -1,28 +1,26 @@
 import PropTypes from "prop-types";
 
-import { UserRandom } from "./UserRandom";
-import { UserName } from "./UserName";
-
-const UserProfile = () => {
-  const callme = () => {
-    console.log("hello");
-  };
-
+export const UserProfile = ({ user }) => {
   return (
     <div>
-      <UserName
-        username="bob"
-        age={20}
-        isLoggedIn={true}
-        array={["helo", "world"]}
-        callme={callme}
-      />
-      <div>
-        <span>email: </span>
-        <span>john@example.com</span>
-      </div>
-      <UserRandom />
+      <b>ID:</b>
+      <span>{user.id}</span>
+      <br />
+      <b>Username: </b>
+      <span>{user.name}</span>
+      <br />
+      <b>Email: </b>
+      <span>{user.email}</span>
+      <br />
+      <br />
     </div>
   );
 };
-export default UserProfile;
+
+UserProfile.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    email: PropTypes.email,
+  }),
+};
