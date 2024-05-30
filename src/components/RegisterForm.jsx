@@ -1,11 +1,19 @@
 import { useState } from "react";
 
 export function RegisterForm() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
+  //   const [username, setUsername] = useState("");
+  //   const [password, setPassword] = useState("");
+  //   const [displayName, setDisplayName] = useState("");
 
-  const isDisabled = !username || !password || !displayName;
+  const [FormField, setFormField] = useState({
+    username: "",
+    password: "",
+    displayName: "",
+  });
+  // instead of using multiple useState statement we can usse a single and pass an object with the initial values of the variables, and here we can use FormField.username etc to access each varible
+
+  const isDisabled =
+    !FormField.username || !FormField.password || !FormField.displayName;
 
   return (
     <div>
@@ -16,9 +24,12 @@ export function RegisterForm() {
           <input
             type="text"
             id="username"
-            value={username}
+            value={FormField.username}
             onChange={(e) => {
-              setUsername(e.target.value);
+              setFormField((curValue) => ({
+                ...curValue,
+                username: e.target.value,
+              }));
             }}
           />
           <br />
@@ -29,9 +40,12 @@ export function RegisterForm() {
           <input
             type="password"
             id="password"
-            value={password}
+            value={FormField.password}
             onChange={(e) => {
-              setPassword(e.target.value);
+              setFormField((curValue) => ({
+                ...curValue,
+                password: e.target.value,
+              }));
             }}
           />
           <br />
@@ -42,9 +56,12 @@ export function RegisterForm() {
           <input
             type="text"
             id="displayName"
-            value={displayName}
+            value={FormField.displayName}
             onChange={(e) => {
-              setDisplayName(e.target.value);
+              setFormField((curValue) => ({
+                ...curValue,
+                displayName: e.target.value,
+              }));
             }}
           />
           <br />
@@ -56,15 +73,15 @@ export function RegisterForm() {
       </form>
       <div>
         <span>Username: </span>
-        <span>{username}</span>
+        <span>{FormField.username}</span>
       </div>
       <div>
         <span>Password: </span>
-        <span>{password}</span>
+        <span>{FormField.password}</span>
       </div>
       <div>
         <span>Name: </span>
-        <span>{displayName}</span>
+        <span>{FormField.displayName}</span>
       </div>
     </div>
   );
