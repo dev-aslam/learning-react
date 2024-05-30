@@ -1,9 +1,6 @@
-import { Form } from "./Form";
+import { RegisterForm } from "./components/RegisterForm";
 
 const App = () => {
-  window.addEventListener("resize", () => {
-    console.log(window.innerHeight, window.innerWidth);
-  });
-  return <Form />;
+  return <RegisterForm />;
 };
 export default App;
