@@ -4,13 +4,4 @@ body{
     font-family: sans-serif;
     font-size: 20px;
     height: 100%;
-    display: grid;
-    align-items: center;
-}
-
-body>div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
